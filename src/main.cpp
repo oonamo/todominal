@@ -12,7 +12,7 @@ using namespace std;
 // Function to get the home enviroment variable and create the database if it
 // Create Todo database file if does not exist
 const string initDataBase() {
-    char *userPath = getenv("HOME");
+    char* userPath = getenv("HOME");
     string userFile;
 
     // string userFile = string(userPath);
@@ -39,8 +39,7 @@ const string userHome = initDataBase();
 const string mainFile = userHome + "/.config/todominal/todos.txt";
 
 // Function to remove a line from a specific line from a file
-//
-void removeLine(const string &filename, int lineNumberToRemove) {
+void removeLine(const string& filename, int lineNumberToRemove) {
     ifstream inputFile(filename);
     vector<string> lines;
 
@@ -49,8 +48,7 @@ void removeLine(const string &filename, int lineNumberToRemove) {
         int currentLine = 1;
         while (getline(inputFile, line)) {
             if (currentLine != lineNumberToRemove) {
-                lines.push_back(
-                    line); // Keep the line if it's not the one to remove
+                lines.push_back(line); // Keep the line if it's not the one to remove
             }
             currentLine++;
         }
@@ -59,7 +57,7 @@ void removeLine(const string &filename, int lineNumberToRemove) {
         // Write the modified content back to the file
         ofstream outputFile(filename);
         if (outputFile.is_open()) {
-            for (const string &line : lines) {
+            for (const string& line : lines) {
                 outputFile << line << endl;
             }
             outputFile.close();
@@ -72,7 +70,7 @@ void removeLine(const string &filename, int lineNumberToRemove) {
 }
 
 // Functiom to get a specific line of a file
-string getLineContent(const string &filename, int lineNumber) {
+string getLineContent(const string& filename, int lineNumber) {
     ifstream file(filename);
     string lineContent;
     int currentLine = 1;
@@ -95,8 +93,7 @@ string getLineContent(const string &filename, int lineNumber) {
 }
 
 // Function to Replace a line with a given line
-void replaceLine(const string &filename, int lineNumber,
-                 const string &newLine) {
+void replaceLine(const string& filename, int lineNumber, const string& newLine) {
     ifstream inputFile(filename);
     vector<string> lines;
 
@@ -116,7 +113,7 @@ void replaceLine(const string &filename, int lineNumber,
         // Write the modified content back to the file
         ofstream outputFile(filename);
         if (outputFile.is_open()) {
-            for (const string &line : lines) {
+            for (const string& line : lines) {
                 outputFile << line << endl;
             }
             outputFile.close();
@@ -129,7 +126,7 @@ void replaceLine(const string &filename, int lineNumber,
 }
 
 // Function to StrikeThrough given text
-string strikethrough(const string &text) {
+string strikethrough(const string& text) {
     string result;
     result = "\e[9m" + text + "\e[m";
     return result;
@@ -150,8 +147,7 @@ void markDone() {
     cout << "Enter Todo Index to Mark as Done: ";
     std::cin >> markInput;
     int markNum = stoi(markInput);
-    replaceLine(mainFile, markNum,
-                strikethrough(getLineContent(mainFile, markNum)));
+    replaceLine(mainFile, markNum, strikethrough(getLineContent(mainFile, markNum)));
 }
 
 // Function to print indexed contents of a file
@@ -181,7 +177,7 @@ void addTodo(string todoName) {
     todoFile.close();
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
     cout << "starting" << endl;
 
     int argNum = argc - 1; // To avoid confusion
@@ -244,7 +240,8 @@ int main(int argc, char *argv[]) {
             // Header
             system("clear");
             system("figlet TODOMINAL");
-            cout << "ToDo List in your Terminal!" << endl << endl;
+            cout << "ToDo List in your Terminal!" << endl
+                 << endl;
             system("echo Hey, $(whoami).");
 
             printTodo();
