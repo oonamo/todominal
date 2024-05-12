@@ -1,4 +1,6 @@
 ---
 Language: Cpp
 BreakBeforeBraces: Attach
+TabWidth: 4
+IndentWidth: 4
 ---
