@@ -178,12 +178,11 @@ void addTodo(string todoName) {
 }
 
 int main(int argc, char* argv[]) {
-    cout << "starting" << endl;
-
     int argNum = argc - 1; // To avoid confusion
 
     // If 1 or more arguments are passed (CLI Mode)
-    if (argNum > 0) {
+    if (argNum > 0)
+    {
         // Store arguments in variables
         string firstArg;
         string secondArg;
@@ -194,7 +193,8 @@ int main(int argc, char* argv[]) {
             "  todominal clearall\n   todominal list\n   todominal "
             "help\nExample:\n   todominal remove 2\n   todominal add \"Hello "
             "World!\"\n   todominal done 3\n";
-        if (argNum == 1) {
+        if (argNum == 1)
+        {
             firstArg = argv[1];
             if (firstArg == "clearall") {
                 ofstream toErase(mainFile, ofstream::out | ofstream::trunc);
@@ -228,7 +228,8 @@ int main(int argc, char* argv[]) {
         }
     }
     // If no arguments are passed (Interactive CLI Mode)
-    else {
+    else
+    {
         // Input Variables
         string userInput;
         string otherInput;
@@ -276,7 +277,8 @@ int main(int argc, char* argv[]) {
                     };
                 } else if (otherInput == "E" || otherInput == "e") {
                 } // Exit
-                else {
+                else
+                {
                     cerr << "Enter a valid response!";
                     this_thread::sleep_for(chrono::seconds(1));
                 }

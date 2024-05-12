@@ -1,6 +1,8 @@
 ---
 Language: Cpp
-BreakBeforeBraces: Attach
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterControlStatement: MultiLine
 DerivePointerAlignment: false
 PointerAlignment: Left
 TabWidth: 4
